@@ -81,7 +81,9 @@ def main():
     pdf_docs = st.file_uploader("Upload your PDF Files", accept_multiple_files=True)
 
     if user_question and pdf_docs:
-        user_input(user_question, pdf_docs)
+        raw_text = get_pdf_text(pdf_docs)
+        text_chunks = get_text_chunks(raw_text)
+        user_input(user_question, text_chunks)
 
     with st.sidebar:
         st.title("Menu:")
