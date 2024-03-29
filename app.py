@@ -54,7 +54,7 @@ def user_input(user_question, pdf_docs):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
     # Create in-memory FAISS vector store
-    vector_store = faiss.IndexFlatL2(embeddings.d)
+    vector_store = faiss.IndexFlatL2(embeddings)
 
     # Process uploaded PDFs and extract text
     raw_text = get_pdf_text(pdf_docs)
