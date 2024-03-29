@@ -53,13 +53,17 @@ def get_conversational_chain():
 def user_input(user_question, pdf_docs):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
-    # Create in-memory FAISS vector store
-    vector_store = faiss.IndexFlatL2(embeddings)
+    # 1. Retrieve the vector dimension (replace with the correct method if needed)
+    vector_dimension = embeddings.get_vector_dimension()  # Assuming this method exists
+
+    # 2. Create the FAISS vector store using the dimension
+    vector_store = faiss.IndexFlatL2(vector_dimension)
 
     # Process uploaded PDFs and extract text
     raw_text = get_pdf_text(pdf_docs)
     text_chunks = get_text_chunks(raw_text)
 
+    # Add embeddings to the vector store
     for chunk in text_chunks:
         embeddings = embeddings.encode(chunk)
         vector_store.add(embeddings)
@@ -71,6 +75,7 @@ def user_input(user_question, pdf_docs):
 
     print(response)
     st.write("Reply: ", response["output_text"])
+
 
 
 def main():
