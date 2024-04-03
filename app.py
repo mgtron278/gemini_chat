@@ -58,24 +58,11 @@ def user_input(user_question, vector_store):
     return response["output_text"]
 
 def main():
-    import streamlit as st
-    import tempfile
-    
-    # Define functions get_pdf_text, get_text_chunks, get_vector_store, user_input as needed
-    
     st.set_page_config("Chat PDF")
-    
-    # Define a function to add custom CSS
-    def local_css(file_name):
-        with open(file_name) as f:
-            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-    
-    local_css("styles.css")  # Ensure you have a file named styles.css with your custom styles
-    
     st.header("Chat with PDF using Gemini💁")
-    
+
     user_question = st.text_input("Ask a Question from the PDF Files")
-    
+
     if user_question:
         with st.spinner("Generating embeddings..."):
             with tempfile.TemporaryDirectory() as tmpdir:
@@ -86,13 +73,12 @@ def main():
                 st.success("Embeddings generated.")
                 answer = user_input(user_question, vector_store)
                 st.write("Reply:", answer)
-    
+
     with st.sidebar:
         st.title("Menu:")
         pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
         if st.button("Submit & Process"):
             st.session_state.pdf_docs = pdf_docs
-
 
 if __name__ == "__main__":
     main()
