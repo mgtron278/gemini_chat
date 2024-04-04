@@ -57,13 +57,13 @@ def user_input(user_question, vector_store):
     return response["output_text"]
 
 def main():
-    st.set_page_config("Chat PDF")
-    st.header("Chat with PDF using Gemini")
+    st.set_page_config("Q&A with your PDF, powered by GEMINI LLM")
+    st.header("Ask Gemini")
 
-    user_question = st.text_input("Ask a Question from the PDF Files")
+    user_question = st.text_input("Ask a Question, make sure the question is accurate and is in context of the uploaded PDF")
 
     if user_question:
-        with st.spinner("Generating embeddings..."):
+        with st.spinner("Generating your embeddings..."):
             with tempfile.TemporaryDirectory() as tmpdir:
                 pdf_docs = st.session_state.pdf_docs
                 raw_text = get_pdf_text(pdf_docs)
@@ -76,14 +76,14 @@ def main():
     with st.sidebar:
         st.title("Menu:")
         pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
-        if st.button("Submit & Process"):
+        if st.button("Take my file"):
             st.session_state.pdf_docs = pdf_docs
             
-            with st.spinner("Processing..."):
+            with st.spinner("Not stealing your data, just learning it....."):
                 raw_text = get_pdf_text(pdf_docs)
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks)
-                st.success("Done")
+                st.success("Done!")
 
 if __name__ == "__main__":
     main()
