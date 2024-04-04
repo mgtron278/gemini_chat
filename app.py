@@ -58,12 +58,12 @@ def user_input(user_question, vector_store):
 
 def main():
     st.set_page_config("Chat PDF")
-    st.header("Chat with PDF using Gemini")
+    st.header("Have a conversation with your PDF using Gemini LLM")
 
     user_question = st.text_input("Ask a Question from the PDF Files")
 
     if user_question:
-        with st.spinner("Generating embeddings..."):
+        with st.spinner("Generating your embeddings..."):
             with tempfile.TemporaryDirectory() as tmpdir:
                 pdf_docs = st.session_state.pdf_docs
                 raw_text = get_pdf_text(pdf_docs)
@@ -76,8 +76,12 @@ def main():
     with st.sidebar:
         st.title("Menu:")
         pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
-        if st.button("Submit & Process"):
-            st.session_state.pdf_docs = pdf_docs
+        if st.button("Take my file"):
+            with st.spinner("Not stealing your data, just learning it...."):
+                raw_text = get_pdf_text(pdf_docs)
+                text_chunks = get_text_chunks(raw_text)
+                get_vector_store(text_chunks)
+                st.success("Done!")
 
 if __name__ == "__main__":
     main()
