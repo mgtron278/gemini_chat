@@ -6,5 +6,8 @@ PyPDF2
 chromadb
 faiss-cpu
 langchain_google_genai
+<<<<<<< HEAD
 google-cloud-storage
 
+=======
+>>>>>>> 7adb3324b347d14b715e72d7342153205421318e
