@@ -58,5 +58,3 @@ Replace `your_api_key_here` with your actual Google API Key.
 This project is built using Python and Streamlit, leveraging Gemini LLM and Google's Generative AI models for text processing and question answering tasks.
 
 ---
-
-Feel free to customize the README according to your preferences and add any additional sections or information you find relevant.
