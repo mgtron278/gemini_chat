@@ -57,8 +57,8 @@ def user_input(user_question, vector_store):
     return response["output_text"]
 
 def main():
-    st.set_page_config("Q&A with your PDF, powered by GEMINI LLM")
-    st.header("Ask Gemini")
+    st.set_page_config("surya_guttikonda")
+    st.header("Q&A with your PDF, powered by GEMINI LLM")
 
     user_question = st.text_input("Ask a Question, make sure the question is accurate and is in context of the uploaded PDF")
 
