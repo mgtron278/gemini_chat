@@ -8,7 +8,7 @@ This project allows users to interact with PDF documents using Gemini Large Lang
 
 ## How to Use
 
-1. Clone this repository to your local machine:
+1. Clone this repository to your local machines
 
    ```bash
    git clone https://github.com/your_username/your_repository.git
