@@ -2,7 +2,7 @@
 
 ---
 
-# Chat PDF with Gemini LLM - Surya Guttikonda
+# Chat PDF with Gemini LLM - Surya Guttikonda.
 
 This project allows users to interact with PDF documents using Gemini Large Language Model (LLM) through a Streamlit interface. Users can upload PDF files and ask questions related to the content of the PDF, and the system will provide answers based on the context of the documents.
 
